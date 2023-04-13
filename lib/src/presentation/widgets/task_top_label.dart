@@ -1,8 +1,14 @@
+import 'package:emp_2/src/domain/models/task_model.dart';
 import 'package:emp_2/src/presentation/widgets/task_calendar.dart';
 import 'package:flutter/material.dart';
 
 class TaskTopLabel extends StatelessWidget {
-  const TaskTopLabel({super.key});
+  final List<TaskModel> tasks;
+
+  const TaskTopLabel({
+    required this.tasks,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +48,7 @@ class TaskTopLabel extends StatelessWidget {
                 context: context,
                 builder: (_) => TaskCalendar(
                   onValueChanged: (value) {},
+                  tasks: tasks,
                 ),
               );
             },

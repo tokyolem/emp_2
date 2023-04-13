@@ -3,23 +3,24 @@ import 'package:emp_2/src/domain/models/task_model.dart';
 abstract class Labels {
   static List<TaskModel> tasks = [
     TaskModel(
-        id: 0,
-        title: 'Loh',
-        date: DateTime.now(),
-        description: 'Ultra loh',
-        taskEvent: 'event'),
+      id: 0,
+      title: 'Some task',
+      date: DateTime(2023, 4, 10, 13, 21),
+      description: 'Description',
+      taskEvent: 'event',
+    ),
     TaskModel(
       id: 1,
-      title: 'Loh1',
-      date: DateTime.now(),
-      description: 'Ultra loh1',
+      title: 'Another task',
+      date: DateTime(2023, 4, 11, 5, 49),
+      description: 'Some really useful info',
       taskEvent: 'event',
     ),
     TaskModel(
       id: 2,
-      title: 'Loh2',
-      date: DateTime.now(),
-      description: 'Ultra loh2',
+      title: 'Task',
+      date: DateTime(2023, 4, 12, 12, 10),
+      description: 'Boring description',
       taskEvent: 'event',
     ),
   ];

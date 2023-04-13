@@ -66,6 +66,7 @@ class TaskAddBody extends StatelessWidget {
                           backgroundColor: Colors.transparent,
                           context: context,
                           builder: (_) => TaskCalendar(
+                            tasks: state.tasks,
                             onValueChanged: (value) => context
                                 .read<AppCubit>()
                                 .onTaskDateChanged(value),
