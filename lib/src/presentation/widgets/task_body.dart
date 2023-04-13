@@ -1,6 +1,4 @@
-import 'package:emp_2/src/domain/models/task_model.dart';
 import 'package:emp_2/src/presentation/cubit/app_cubit.dart';
-import 'package:emp_2/src/presentation/utils/constants/labels.dart';
 import 'package:emp_2/src/presentation/widgets/task_add_button.dart';
 import 'package:emp_2/src/presentation/widgets/task_card.dart';
 import 'package:emp_2/src/presentation/widgets/task_top_label.dart';
@@ -27,7 +25,9 @@ class _TaskBodyState extends State<TaskBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TaskTopLabel(),
+              TaskTopLabel(
+                tasks: state.tasks,
+              ),
               Expanded(
                 child: ListView.builder(
                   itemCount: state.tasks.length,
