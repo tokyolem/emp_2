@@ -4,6 +4,7 @@ class TaskModel {
   final DateTime date;
   final String description;
   final String taskEvent;
+  final bool isDone;
 
   const TaskModel({
     required this.id,
@@ -11,6 +12,7 @@ class TaskModel {
     required this.date,
     required this.description,
     required this.taskEvent,
+    this.isDone = false,
   });
 
   TaskModel copyWith({
@@ -18,7 +20,8 @@ class TaskModel {
     String? title,
     DateTime? date,
     String? description,
-    String? taskEvent
+    String? taskEvent,
+    bool? isDone,
   }) =>
       TaskModel(
         id: id ?? this.id,
@@ -26,5 +29,6 @@ class TaskModel {
         date: date ?? this.date,
         description: description ?? this.description,
         taskEvent: taskEvent ?? this.taskEvent,
+        isDone: isDone ?? this.isDone,
       );
 }

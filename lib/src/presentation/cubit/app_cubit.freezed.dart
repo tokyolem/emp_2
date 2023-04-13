@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppState {
   TaskModel get task => throw _privateConstructorUsedError;
-  List<TaskModel> get tasks => throw _privateConstructorUsedError;
+  IList<TaskModel> get tasks => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -29,7 +29,7 @@ abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
-  $Res call({TaskModel task, List<TaskModel> tasks});
+  $Res call({TaskModel task, IList<TaskModel> tasks});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
       tasks: null == tasks
           ? _value.tasks
           : tasks // ignore: cast_nullable_to_non_nullable
-              as List<TaskModel>,
+              as IList<TaskModel>,
     ) as $Val);
   }
 }
@@ -68,7 +68,7 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       __$$_AppStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({TaskModel task, List<TaskModel> tasks});
+  $Res call({TaskModel task, IList<TaskModel> tasks});
 }
 
 /// @nodoc
@@ -91,9 +91,9 @@ class __$$_AppStateCopyWithImpl<$Res>
           : task // ignore: cast_nullable_to_non_nullable
               as TaskModel,
       tasks: null == tasks
-          ? _value._tasks
+          ? _value.tasks
           : tasks // ignore: cast_nullable_to_non_nullable
-              as List<TaskModel>,
+              as IList<TaskModel>,
     ));
   }
 }
@@ -101,18 +101,12 @@ class __$$_AppStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AppState implements _AppState {
-  const _$_AppState({required this.task, required final List<TaskModel> tasks})
-      : _tasks = tasks;
+  const _$_AppState({required this.task, required this.tasks});
 
   @override
   final TaskModel task;
-  final List<TaskModel> _tasks;
   @override
-  List<TaskModel> get tasks {
-    if (_tasks is EqualUnmodifiableListView) return _tasks;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tasks);
-  }
+  final IList<TaskModel> tasks;
 
   @override
   String toString() {
@@ -125,12 +119,12 @@ class _$_AppState implements _AppState {
         (other.runtimeType == runtimeType &&
             other is _$_AppState &&
             (identical(other.task, task) || other.task == task) &&
-            const DeepCollectionEquality().equals(other._tasks, _tasks));
+            const DeepCollectionEquality().equals(other.tasks, tasks));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, task, const DeepCollectionEquality().hash(_tasks));
+      runtimeType, task, const DeepCollectionEquality().hash(tasks));
 
   @JsonKey(ignore: true)
   @override
@@ -142,12 +136,12 @@ class _$_AppState implements _AppState {
 abstract class _AppState implements AppState {
   const factory _AppState(
       {required final TaskModel task,
-      required final List<TaskModel> tasks}) = _$_AppState;
+      required final IList<TaskModel> tasks}) = _$_AppState;
 
   @override
   TaskModel get task;
   @override
-  List<TaskModel> get tasks;
+  IList<TaskModel> get tasks;
   @override
   @JsonKey(ignore: true)
   _$$_AppStateCopyWith<_$_AppState> get copyWith =>

@@ -25,17 +25,37 @@ class _TaskBodyState extends State<TaskBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 24),
               TaskTopLabel(
-                tasks: state.tasks,
+                tasks: state.tasks.toList(),
               ),
               Expanded(
-                child: ListView.builder(
-                  itemCount: state.tasks.length,
-                  itemBuilder: (_, index) {
-                    return TaskCard(
-                      task: state.tasks[index],
-                    );
-                  },
+                child: ListView(
+                  children: [
+                    ...state.tasks.where((e) => !e.isDone).map(
+                          (e) => TaskCard(task: e),
+                        ),
+                    if (state.tasks
+                        .where((e) => e.isDone)
+                        .map(
+                          (e) => TaskCard(task: e),
+                        )
+                        .isNotEmpty) ...[
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      const Text(
+                        'Done',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      const Divider(
+                        thickness: 2,
+                      ),
+                    ],
+                    ...state.tasks.where((e) => e.isDone).map(
+                          (e) => TaskCard(task: e),
+                        ),
+                  ],
                 ),
               ),
               const TaskAddButton(),

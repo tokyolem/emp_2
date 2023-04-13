@@ -1,6 +1,9 @@
 import 'package:emp_2/src/domain/models/task_model.dart';
+import 'package:emp_2/src/presentation/cubit/app_cubit.dart';
+import 'package:emp_2/src/presentation/pages/edit_tast_page.dart';
 import 'package:emp_2/src/presentation/utils/extension/datetime_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TaskCard extends StatelessWidget {
   final TaskModel task;
@@ -23,7 +26,14 @@ class TaskCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         child: InkWell(
           borderRadius: BorderRadius.circular(16),
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => EditTaskPage(task: task),
+              ),
+            );
+          },
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 4,
@@ -83,18 +93,38 @@ class TaskCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(36),
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Icon(Icons.more_horiz),
+                Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(36),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(
+                            Icons.check_circle_outline,
+                            color: task.isDone ? Colors.green : Colors.grey,
+                          ),
+                        ),
+                        onTap: () {
+                          context.read<AppCubit>().updateDone(task);
+                        },
                       ),
-                      onTap: () {},
                     ),
-                  ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(36),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Icon(Icons.delete),
+                        ),
+                        onTap: () {
+                          context.read<AppCubit>().deleteTask(task);
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

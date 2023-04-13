@@ -4,6 +4,6 @@ part of 'app_cubit.dart';
 class AppState with _$AppState {
   const factory AppState({
     required TaskModel task,
-    required List<TaskModel> tasks,
+    required IList<TaskModel> tasks,
   }) = _AppState;
 }
